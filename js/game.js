@@ -232,7 +232,7 @@ const ninjaGame = {
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
                 this.disfrutones = this.disfrutones.filter(elm => elm === 1)
-                this.player.playerLife -= 5
+                this.player.playerLife -= 2
             }
         })
 
