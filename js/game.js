@@ -20,9 +20,15 @@ const ninjaGame = {
         jump: 38,
     },
     background: [],
-    // audios: {
-    //     cut: new Audio('./audios/ejemplo.wav')  EJEMPLO AUDIO REVISAR!!
-    // },
+    audios: {
+        cutSound: new Audio('./audios/cutSound.mp3'),
+        candySound: new Audio('./audios/candySound.mp3'),
+        midgetSound: new Audio('./audios/midgetSound.wav'),
+        gameOverSound: new Audio('./audios/gameOverSound.mp3'),
+        victorySound: new Audio('./audios/victorySound.mp3')
+
+          //EJEMPLO AUDIO REVISAR!!
+    },
 
     player: undefined,
     apples: [], oranges: [], pears: [], watermelon: [], candy: [], disfrutones: [],
@@ -90,6 +96,10 @@ const ninjaGame = {
             // EJECUCIÓN DE GAME OVER:
             if (this.player.playerLife <= 0) {
                 return this.gameOver()
+            }
+
+            if (this.playerPoints >= 200) {
+                return this.victory()
             }
 
         }, 70)
@@ -170,6 +180,8 @@ const ninjaGame = {
 
                 this.apples = this.apples.filter(elm => elm === 1)
                 this.playerPoints += 50
+
+                this.audios.cutSound.play()
             }
         })
 
@@ -183,6 +195,8 @@ const ninjaGame = {
 
                 this.pears = this.pears.filter(elm => elm === 1)
                 this.playerPoints += 20
+
+                this.audios.cutSound.play()
             }
         })
 
@@ -195,6 +209,8 @@ const ninjaGame = {
 
                 this.oranges = this.oranges.filter(elm => elm === 1)
                 this.playerPoints += 100
+
+                this.audios.cutSound.play()
             }
         })
 
@@ -208,7 +224,7 @@ const ninjaGame = {
                 this.watermelon = this.watermelon.filter(elm => elm === 1)
                 this.playerPoints += 35
 
-                // this.audios.cut.play() REVISAR AUDIOS DE CORTE
+                this.audios.cutSound.play()
             }
         })
 
@@ -221,6 +237,8 @@ const ninjaGame = {
 
                 this.candy = this.candy.filter(elm => elm === 1)
                 this.player.playerLife += 1
+
+                this.audios.candySound.play()
             }
         })
 
@@ -233,6 +251,8 @@ const ninjaGame = {
 
                 this.disfrutones = this.disfrutones.filter(elm => elm === 1)
                 this.player.playerLife -= 2
+
+                this.audios.midgetSound.play()
             }
         })
 
@@ -240,6 +260,17 @@ const ninjaGame = {
 
     clear() {
         this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
+    },
+
+    victory() {
+        
+        this.ctx.font = 'bold 200px Turret Road';
+        this.ctx.fillStyle = 'red';
+        this.ctx.fillText(`YOU WIN`, this.canvasSize.w / 2 - 400, this.canvasSize.h / 4);
+        this.ctx.fillText(`🔥🔥FUEGOTE🔥🔥`, this.canvasSize.w / 2 - 900, this.canvasSize.h / 2);
+        this.playerPoints = 0;
+        this.audios.victorySound.play()
+        clearInterval(this.interval);
     },
 
     gameOver() {
@@ -250,6 +281,7 @@ const ninjaGame = {
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h / 4);
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h - 230);
         this.playerPoints = 0;
+        this.audios.gameOverSound.play()
         clearInterval(this.interval);
     }
 
