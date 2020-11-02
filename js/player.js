@@ -14,7 +14,7 @@ class Player {
             y: playerPosY
         };
 
-        // this.posY0 = this.playerPosY;
+        this.posY0 = this.playerPos.y;
 
         this.playerKeys = keys;
 
@@ -26,8 +26,8 @@ class Player {
 
         this.playerLife = 5;
 
-        // this.velY = 1;
-        // this.gravity = 0.4;
+        this.velY = 1;
+        this.gravity = 2;
 
         // this.setListeners()
     }
@@ -44,7 +44,8 @@ class Player {
             this.playerPos.x,
             this.playerPos.y,
             this.width,
-            this.height
+            this.height,
+            this.updatePosition()
         );
 
         this.animate(framesCounter)
@@ -62,7 +63,7 @@ class Player {
           }
     }
 
-    movePlayer(direction) {
+    movePlayer(direction) {  // REFACTORIZAR FUNCIONES DE MOVE + UPDATE LLAMÁNDOLAS EN UNA MISMA FUNCIÓN
 
         if (this.playerPos.x > 50 && (this.playerPos.x + this.width) < (this.canvasSize.w - 50)) {
 
@@ -79,42 +80,27 @@ class Player {
             direction === 'left' ? this.playerPos.x -= 30 : null
             direction === 'right' ? this.playerPos.x -= 0 : null
         
+
+        } if (this.playerPos.y >= this.posY0) {
+
+            if (direction === 'jump') {
+                this.playerPos.y -= 150;
+                this.velY -= 1;
+            } 
         }
-        
-        // else if (this.playerPos.y < this.posY0) {
-
-        //     direction === 'jump' ? this.jump() : null
-        
-        // }
-        // } else if (this.playerPos.y < this.posY0) {
-
-        //     this.playerPos.y += this.velY;
-        //     this.velY += this.gravity;
-    
-        // } else {
-    
-        //     this.playerPos.y = this.posY0;
-        //     this.velY = 1;
-        // }
-        
     }
-     
-    // setListeners() {
 
-    //     document.addEventListener("keydown", e => {
-    //         switch (e.keyCode) {
-    //             case this.keys.jump:
-    //                 if (this.playerPos.y >= this.posY0) {
-    //                     this.jump()
-    //                 }
-    //                 break;
-    //         }
-    //     });
-    // }
+    updatePosition() {
 
-    // jump() {
-        
-    //     this.playerPos.y -= 40;
-    //     this.velY -= 8;
-    //   }
+        if (this.playerPos.y < this.posY0) {
+
+          this.playerPos.y += this.velY;
+            this.velY += this.gravity;
+            
+        } else {
+
+          this.playerPos.y = this.posY0;
+          this.velY = 1.5;
+        }
+    }
 }

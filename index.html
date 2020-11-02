@@ -28,7 +28,8 @@
     <script>  
 
         const soundGame = document.getElementById("myAudio"); 
-        
+        soundGame.volume = 0;
+
         function playAudio() { 
               soundGame.play(); 
             } 
@@ -47,9 +48,9 @@
 
     <div class="order">
 
-        <audio id="myAudio" controls loop>
-            <source src="./audios/151335__rap2h__graham-smith.mp3" type="audio/mpeg">
-            </audio>
+        <audio id="myAudio" src="./audios/gameSound.mp3" controls loop>
+                
+        </audio>
 
         <div class="center">
 
@@ -57,7 +58,7 @@
             <br>
             <button class="instructions">Use the left and right arrow to ninja control</button>
             <br>
-            <img src="./images/arrows.png"/>
+            <img src="./images/arrows (copia).png"/>
 
                 
 

@@ -26,8 +26,6 @@ const ninjaGame = {
         midgetSound: new Audio('./audios/midgetSound.wav'),
         gameOverSound: new Audio('./audios/gameOverSound.mp3'),
         victorySound: new Audio('./audios/victorySound.mp3')
-
-          //EJEMPLO AUDIO REVISAR!!
     },
 
     player: undefined,
@@ -98,7 +96,7 @@ const ninjaGame = {
                 return this.gameOver()
             }
 
-            if (this.playerPoints >= 200) {
+            if (this.playerPoints >= 500) {
                 return this.victory()
             }
 
@@ -111,7 +109,6 @@ const ninjaGame = {
         this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png")
         // this.player = new Player(this.ctx, 100, 200, this.canvasSize.w / 2 - 50, this.canvasSize.h - 250, this.keys, this.canvasSize)
         this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize)
-
     },
 
     // CREATE FRUITS:
@@ -155,10 +152,11 @@ const ninjaGame = {
     // MOVE NINJA:
     setEventListeners() {
 
-        document.onkeydown = e => {
+        document.addEventListener('keydown', e => {
             e.keyCode === this.keys.left ? this.player.movePlayer('left') : null
             e.keyCode === this.keys.right ? this.player.movePlayer('right') : null
-        };
+            e.keyCode === this.keys.jump ? this.player.movePlayer('jump') : null
+        })
     },
 
     // DRAW ALL:

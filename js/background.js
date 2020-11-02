@@ -15,7 +15,7 @@ class Background {
         this.posX = 0;
         this.posY = 0;
 
-        this.velX = 10;
+        this.velX = 7;
     }
 
   draw() {
