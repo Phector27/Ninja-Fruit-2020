@@ -89,7 +89,7 @@ const ninjaGame = {
     // INICIO DEL JUEGO:
     reset() {
 
-        this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/SALSA5.png")
+        this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png")
         // this.player = new Player(this.ctx, 100, 200, this.canvasSize.w / 2 - 50, this.canvasSize.h - 250, this.keys, this.canvasSize)
         this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 320, this.keys, this.canvasSize)
 
