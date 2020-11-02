@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 class Watermelon {
 
     constructor(ctx, fruitPosX, fruitPosY, fruitSizeW, fruitSizeH, canvasSize, speed) {
@@ -7,12 +9,12 @@ class Watermelon {
         this.fruitPos = {
             x: fruitPosX,
             y: fruitPosY
-        }
+        };
 
         this.fruitSize = {
             w: fruitSizeW,
             h: fruitSizeH
-        }
+        };
 
         this.canvasSize = canvasSize;
 
@@ -21,13 +23,13 @@ class Watermelon {
         this.fruitImage = new Image();
         this.fruitImage.src = './images/watermelon.png';
 
-        this.drawWatermelon()
+        this.drawWatermelon();
     }
 
     drawWatermelon() {
         
-        this.moveWatermelon()
-        this.ctx.drawImage(this.fruitImage, this.fruitPos.x, this.fruitPos.y, this.fruitSize.w, this.fruitSize.h)
+        this.moveWatermelon();
+        this.ctx.drawImage(this.fruitImage, this.fruitPos.x, this.fruitPos.y, this.fruitSize.w, this.fruitSize.h);
     
     }
 

@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 class Player {
 
     constructor(ctx, playerPosX, playerPosY, keys, canvasSize) {
@@ -48,7 +50,7 @@ class Player {
             this.updatePosition()
         );
 
-        this.animate(framesCounter)
+        this.animate(framesCounter);
     }
 
     animate(framesCounter) {
@@ -67,18 +69,18 @@ class Player {
 
         if (this.playerPos.x > 50 && (this.playerPos.x + this.width) < (this.canvasSize.w - 50)) {
 
-            direction === 'left' ? this.playerPos.x -= 30 : null
-            direction === 'right' ? this.playerPos.x += 30 : null
+            direction === 'left' ? this.playerPos.x -= 30 : null;
+            direction === 'right' ? this.playerPos.x += 30 : null;
 
         } else if (this.playerPos.x <= 50) {
 
-            direction === 'left' ? this.playerPos.x -= 0 : null
-            direction === 'right' ? this.playerPos.x += 30 : null
+            direction === 'left' ? this.playerPos.x -= 0 : null;
+            direction === 'right' ? this.playerPos.x += 30 : null;
 
         } else if ((this.playerPos.x + this.width) >= (this.canvasSize.w - 50)) {
 
-            direction === 'left' ? this.playerPos.x -= 30 : null
-            direction === 'right' ? this.playerPos.x -= 0 : null
+            direction === 'left' ? this.playerPos.x -= 30 : null;
+            direction === 'right' ? this.playerPos.x -= 0 : null;
         
 
         } if (this.playerPos.y >= this.posY0) {

@@ -1,4 +1,4 @@
-// window.onload = () => ninjaGame.init('myCanvas')
+/*jshint esversion: 6 */
 
 window.onload = () => {
     document.getElementById('start-button').onclick = () => {

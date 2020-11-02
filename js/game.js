@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const ninjaGame = {
 
     name: 'New Ninja Fruit Game 2020',
@@ -31,7 +33,7 @@ const ninjaGame = {
     player: undefined,
     apples: [], oranges: [], pears: [], watermelon: [], candy: [], disfrutones: [],
 
-    
+
     // INICIO:
     init(id) {
 
@@ -45,8 +47,8 @@ const ninjaGame = {
     // DIMENSIONES CANVAS
     setDimensions() {
 
-        this.canvas.setAttribute('width', this.canvasSize.w)
-        this.canvas.setAttribute('height', this.canvasSize.h)
+        this.canvas.setAttribute('width', this.canvasSize.w);
+        this.canvas.setAttribute('height', this.canvasSize.h);
 
         // this.canvasSize.w = this.canvasTag.width
         // this.canvasSize.h = this.canvasTag.height
@@ -55,32 +57,32 @@ const ninjaGame = {
     // EJECUCIÓN DE FUNCIONES
     start() {
 
-        this.reset()
+        this.reset();
 
         this.interval = setInterval(() => {
 
 
-            this.clear()
-            this.drawAll()
-            this.isCollision()
+            this.clear();
+            this.drawAll();
+            this.isCollision();
 
-            this.frames += 1
-            this.frames % 120 === 0 ? this.createApples() : null
-            this.frames % 90 === 0 ? this.createOranges() : null
-            this.frames % 160 === 0 ? this.createPears() : null
-            this.frames % 200 === 0 ? this.createWatermelon() : null
-            this.frames % 250 === 0 ? this.createCandy() : null
-            this.frames % 80 === 0 ? this.createDisfruton() : null
+            this.frames += 1;
+            this.frames % 120 === 0 ? this.createApples() : null;
+            this.frames % 90 === 0 ? this.createOranges() : null;
+            this.frames % 160 === 0 ? this.createPears() : null;
+            this.frames % 200 === 0 ? this.createWatermelon() : null;
+            this.frames % 250 === 0 ? this.createCandy() : null;
+            this.frames % 80 === 0 ? this.createDisfruton() : null;
 
-            this.pears.some(elm => elm.drawPears())
-            this.apples.some(elm => elm.drawApple())
-            this.oranges.some(elm => elm.drawOrange())
-            this.watermelon.some(elm => elm.drawWatermelon())
-            this.candy.some(elm => elm.drawCandy())
-            this.disfrutones.some(elm => elm.drawDisfruton())
+            this.pears.some(elm => elm.drawPears());
+            this.apples.some(elm => elm.drawApple());
+            this.oranges.some(elm => elm.drawOrange());
+            this.watermelon.some(elm => elm.drawWatermelon());
+            this.candy.some(elm => elm.drawCandy());
+            this.disfrutones.some(elm => elm.drawDisfruton());
 
             this.framesCounter > 5000 ? this.framesCounter = 0 : this.framesCounter++;
-            
+
             // SCORE EN PANTALLA:
             this.ctx.font = 'bold 60px Turret Road';
             this.ctx.fillStyle = '#5e1f0c';
@@ -93,59 +95,58 @@ const ninjaGame = {
 
             // EJECUCIÓN DE GAME OVER:
             if (this.player.playerLife <= 0) {
-                return this.gameOver()
+                return this.gameOver();
             }
 
-            if (this.playerPoints >= 500) {
-                return this.victory()
+            if (this.playerPoints >= 1000) {
+                return this.victory();
             }
 
-        }, 70)
+        }, 70);
     },
 
     // INICIO DEL JUEGO:
     reset() {
 
-        this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png")
-        // this.player = new Player(this.ctx, 100, 200, this.canvasSize.w / 2 - 50, this.canvasSize.h - 250, this.keys, this.canvasSize)
-        this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize)
+        this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png");
+        this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize);
     },
 
     // CREATE FRUITS:
     createApples() {
 
-        const apple = new Apple(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15)
-        this.apples.push(apple)
+        const apple = new Apple(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15);
+        this.apples.push(apple);
     },
 
     createOranges() {
 
-        const orange = new Orange(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15)
-        this.oranges.push(orange)
+        const orange = new Orange(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15);
+        this.oranges.push(orange);
     },
 
     createPears() {
 
-        const pear = new Pear(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15)
-        this.pears.push(pear)
+        const pear = new Pear(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15);
+        this.pears.push(pear);
     },
 
     createWatermelon() {
 
-        const watermelon = new Watermelon(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 100, 100, this.canvasSize, 22)
-        this.watermelon.push(watermelon)
+        const watermelon = new Watermelon(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 100, 100, this.canvasSize, 22);
+        this.watermelon.push(watermelon);
     },
 
     createCandy() {
 
-        const candy = new Candy(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 20)
-        this.candy.push(candy)
+        const candy = new Candy(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 20);
+        this.candy.push(candy);
     },
 
     createDisfruton() {
 
-        const disfruton = new Disfruton(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 100, 100, this.canvasSize, 25)
-        this.disfrutones.push(disfruton)
+        const disfruton = new Disfruton(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 100, 100, this.canvasSize, 25);
+        this.disfrutones.push(disfruton);
 
     },
 
@@ -153,17 +154,17 @@ const ninjaGame = {
     setEventListeners() {
 
         document.addEventListener('keydown', e => {
-            e.keyCode === this.keys.left ? this.player.movePlayer('left') : null
-            e.keyCode === this.keys.right ? this.player.movePlayer('right') : null
-            e.keyCode === this.keys.jump ? this.player.movePlayer('jump') : null
-        })
+            e.keyCode === this.keys.left ? this.player.movePlayer('left') : null;
+            e.keyCode === this.keys.right ? this.player.movePlayer('right') : null;
+            e.keyCode === this.keys.jump ? this.player.movePlayer('jump') : null;
+        });
     },
 
     // DRAW ALL:
     drawAll() {
 
-        this.background.draw()
-        this.player.draw(this.framesCounter)
+        this.background.draw();
+        this.player.draw(this.framesCounter);
     },
 
     // COLLISIONS:
@@ -176,12 +177,12 @@ const ninjaGame = {
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.apples = this.apples.filter(elm => elm === 1)
-                this.playerPoints += 50
+                this.apples = this.apples.filter(elm => elm === 1);
+                this.playerPoints += 50;
 
-                this.audios.cutSound.play()
+                this.audios.cutSound.play();
             }
-        })
+        });
 
 
         this.pears.forEach(elm => {
@@ -191,12 +192,12 @@ const ninjaGame = {
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.pears = this.pears.filter(elm => elm === 1)
-                this.playerPoints += 20
+                this.pears = this.pears.filter(elm => elm === 1);
+                this.playerPoints += 20;
 
-                this.audios.cutSound.play()
+                this.audios.cutSound.play();
             }
-        })
+        });
 
         this.oranges.forEach(elm => {
 
@@ -205,12 +206,12 @@ const ninjaGame = {
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.oranges = this.oranges.filter(elm => elm === 1)
-                this.playerPoints += 100
+                this.oranges = this.oranges.filter(elm => elm === 1);
+                this.playerPoints += 100;
 
-                this.audios.cutSound.play()
+                this.audios.cutSound.play();
             }
-        })
+        });
 
         this.watermelon.forEach(elm => {
 
@@ -219,12 +220,12 @@ const ninjaGame = {
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.watermelon = this.watermelon.filter(elm => elm === 1)
-                this.playerPoints += 35
+                this.watermelon = this.watermelon.filter(elm => elm === 1);
+                this.playerPoints += 35;
 
-                this.audios.cutSound.play()
+                this.audios.cutSound.play();
             }
-        })
+        });
 
         this.candy.forEach(elm => {
 
@@ -233,12 +234,12 @@ const ninjaGame = {
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.candy = this.candy.filter(elm => elm === 1)
-                this.player.playerLife += 1
+                this.candy = this.candy.filter(elm => elm === 1);
+                this.player.playerLife += 1;
 
-                this.audios.candySound.play()
+                this.audios.candySound.play();
             }
-        })
+        });
 
         this.disfrutones.forEach(elm => {
 
@@ -247,27 +248,27 @@ const ninjaGame = {
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.disfrutones = this.disfrutones.filter(elm => elm === 1)
-                this.player.playerLife -= 2
+                this.disfrutones = this.disfrutones.filter(elm => elm === 1);
+                this.player.playerLife -= 2;
 
-                this.audios.midgetSound.play()
+                this.audios.midgetSound.play();
             }
-        })
+        });
 
     },
 
     clear() {
-        this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
+        this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
     },
 
     victory() {
-        
+
         this.ctx.font = 'bold 200px Turret Road';
         this.ctx.fillStyle = 'red';
         this.ctx.fillText(`YOU WIN`, this.canvasSize.w / 2 - 400, this.canvasSize.h / 4);
         this.ctx.fillText(`🔥🔥FUEGOTE🔥🔥`, this.canvasSize.w / 2 - 900, this.canvasSize.h / 2);
         this.playerPoints = 0;
-        this.audios.victorySound.play()
+        this.audios.victorySound.play();
         clearInterval(this.interval);
     },
 
@@ -279,8 +280,8 @@ const ninjaGame = {
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h / 4);
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h - 230);
         this.playerPoints = 0;
-        this.audios.gameOverSound.play()
+        this.audios.gameOverSound.play();
         clearInterval(this.interval);
     }
 
-}
+};
