@@ -1,4 +1,4 @@
-class Cauliflower {
+class Disfruton {
 
     constructor(ctx, fruitPosX, fruitPosY, fruitSizeW, fruitSizeH, canvasSize, speed) {
         
@@ -19,19 +19,19 @@ class Cauliflower {
         this.fruitSpeed = speed;
 
         this.fruitImage = new Image();
-        this.fruitImage.src = './images/cauliflower.png';
+        this.fruitImage.src = './images/DISFRUTON.png';
 
-        this.drawCauliflower()
+        this.drawDisfruton()
     }
 
-    drawCauliflower() {
+    drawDisfruton() {
         
-        this.moveCauliflower()
+        this.moveDisfruton()
         this.ctx.drawImage(this.fruitImage, this.fruitPos.x, this.fruitPos.y, this.fruitSize.w, this.fruitSize.h)
     
     }
 
-    moveCauliflower() {
+    moveDisfruton() {
 
         this.fruitPos.y += this.fruitSpeed;
     }

@@ -6,13 +6,15 @@ class Player {
 
         this.canvasSize = canvasSize;
 
-        this.width = 120; // NO ENTENDEMOS PORQUE NO NOS TOMA EN FORMA DE OBJETO
-        this.height = 200;
+        this.width = 168;
+        this.height = 280;
 
         this.playerPos = {
             x: playerPosX,
             y: playerPosY
-        }
+        };
+
+        // this.posY0 = this.playerPosY;
 
         this.playerKeys = keys;
 
@@ -26,6 +28,8 @@ class Player {
 
         // this.velY = 1;
         // this.gravity = 0.4;
+
+        // this.setListeners()
     }
 
     draw(framesCounter) {
@@ -74,15 +78,43 @@ class Player {
 
             direction === 'left' ? this.playerPos.x -= 30 : null
             direction === 'right' ? this.playerPos.x -= 0 : null
+        
+        }
+        
+        // else if (this.playerPos.y < this.posY0) {
 
-        // } else if (this.playerPos.y < this.playerPos.y) {   // Está saltando!
+        //     direction === 'jump' ? this.jump() : null
+        
+        // }
+        // } else if (this.playerPos.y < this.posY0) {
+
         //     this.playerPos.y += this.velY;
         //     this.velY += this.gravity;
-        //     direction === 'left' ? this.playerPos.x -= 30 : null
-
-        //   } else {
-        //     this.playerPos.y = this.playerPos.y;
+    
+        // } else {
+    
+        //     this.playerPos.y = this.posY0;
         //     this.velY = 1;
-          }
-    }   
+        // }
+        
+    }
+     
+    // setListeners() {
+
+    //     document.addEventListener("keydown", e => {
+    //         switch (e.keyCode) {
+    //             case this.keys.jump:
+    //                 if (this.playerPos.y >= this.posY0) {
+    //                     this.jump()
+    //                 }
+    //                 break;
+    //         }
+    //     });
+    // }
+
+    // jump() {
+        
+    //     this.playerPos.y -= 40;
+    //     this.velY -= 8;
+    //   }
 }

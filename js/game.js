@@ -7,7 +7,6 @@ const ninjaGame = {
     authors: 'Heyling Marquez & Héctor Carramiñana',
     canvas: undefined,
     ctx: undefined,
-    // FPS: 60,
     frames: 0,
     playerPoints: 0,
     framesCounter: 0,
@@ -18,16 +17,15 @@ const ninjaGame = {
     keys: {
         left: 37,
         right: 39,
-        jump: 32,
+        jump: 38,
     },
     background: [],
+    // audios: {
+    //     cut: new Audio('./audios/ejemplo.wav')  EJEMPLO AUDIO REVISAR!!
+    // },
+
     player: undefined,
-    apples: [], oranges: [], pears: [], watermelon: [], candy: [], cauliflowers: [],
-
-
-
-
-
+    apples: [], oranges: [], pears: [], watermelon: [], candy: [], disfrutones: [],
 
     
     // INICIO:
@@ -68,22 +66,33 @@ const ninjaGame = {
             this.frames % 160 === 0 ? this.createPears() : null
             this.frames % 200 === 0 ? this.createWatermelon() : null
             this.frames % 250 === 0 ? this.createCandy() : null
-            this.frames % 90 === 0 ? this.createCauliflower() : null
+            this.frames % 80 === 0 ? this.createDisfruton() : null
 
             this.pears.some(elm => elm.drawPears())
             this.apples.some(elm => elm.drawApple())
             this.oranges.some(elm => elm.drawOrange())
             this.watermelon.some(elm => elm.drawWatermelon())
             this.candy.some(elm => elm.drawCandy())
-            this.cauliflowers.some(elm => elm.drawCauliflower())
+            this.disfrutones.some(elm => elm.drawDisfruton())
 
             this.framesCounter > 5000 ? this.framesCounter = 0 : this.framesCounter++;
+            
+            // SCORE EN PANTALLA:
+            this.ctx.font = 'bold 60px Turret Road';
+            this.ctx.fillStyle = '#5e1f0c';
+            this.ctx.fillText(`SCORE: ${this.playerPoints}`, 75, 75);
+
+            // VIDAS EN PANTALLA:
+            this.ctx.font = 'bold 60px Turret Road';
+            this.ctx.fillStyle = 'yellow';
+            this.ctx.fillText(`LIVES: ${this.player.playerLife}`, this.canvasSize.w - 300, 75);
+
+            // EJECUCIÓN DE GAME OVER:
+            if (this.player.playerLife <= 0) {
+                return this.gameOver()
+            }
 
         }, 70)
-
-
-        // this.generateCauliflowers();
-        // this.clearCauliflowers
     },
 
     // INICIO DEL JUEGO:
@@ -91,45 +100,45 @@ const ninjaGame = {
 
         this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png")
         // this.player = new Player(this.ctx, 100, 200, this.canvasSize.w / 2 - 50, this.canvasSize.h - 250, this.keys, this.canvasSize)
-        this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 320, this.keys, this.canvasSize)
+        this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize)
 
     },
 
     // CREATE FRUITS:
     createApples() {
 
-        const apple = new Apple(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 60, 60, this.canvasSize, 15)
+        const apple = new Apple(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15)
         this.apples.push(apple)
     },
 
     createOranges() {
 
-        const orange = new Orange(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 60, 60, this.canvasSize, 15)
+        const orange = new Orange(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15)
         this.oranges.push(orange)
     },
 
     createPears() {
 
-        const pear = new Pear(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 60, 60, this.canvasSize, 15)
+        const pear = new Pear(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15)
         this.pears.push(pear)
     },
 
     createWatermelon() {
 
-        const watermelon = new Watermelon(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 60, 60, this.canvasSize, 22)
+        const watermelon = new Watermelon(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 100, 100, this.canvasSize, 22)
         this.watermelon.push(watermelon)
     },
 
     createCandy() {
 
-        const candy = new Candy(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 60, 60, this.canvasSize, 20)
+        const candy = new Candy(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 20)
         this.candy.push(candy)
     },
 
-    createCauliflower() {
+    createDisfruton() {
 
-        const cauliflower = new Cauliflower(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 25)
-        this.cauliflowers.push(cauliflower)
+        const disfruton = new Disfruton(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 100, 100, this.canvasSize, 25)
+        this.disfrutones.push(disfruton)
 
     },
 
@@ -161,8 +170,6 @@ const ninjaGame = {
 
                 this.apples = this.apples.filter(elm => elm === 1)
                 this.playerPoints += 50
-
-                console.log(this.playerPoints)
             }
         })
 
@@ -176,8 +183,6 @@ const ninjaGame = {
 
                 this.pears = this.pears.filter(elm => elm === 1)
                 this.playerPoints += 20
-
-                console.log(this.playerPoints)
             }
         })
 
@@ -190,8 +195,6 @@ const ninjaGame = {
 
                 this.oranges = this.oranges.filter(elm => elm === 1)
                 this.playerPoints += 100
-
-                console.log(this.playerPoints)
             }
         })
 
@@ -205,7 +208,7 @@ const ninjaGame = {
                 this.watermelon = this.watermelon.filter(elm => elm === 1)
                 this.playerPoints += 35
 
-                console.log(this.playerPoints)
+                // this.audios.cut.play() REVISAR AUDIOS DE CORTE
             }
         })
 
@@ -218,22 +221,18 @@ const ninjaGame = {
 
                 this.candy = this.candy.filter(elm => elm === 1)
                 this.player.playerLife += 1
-
-                console.log(this.player.playerLife)
             }
         })
 
-        this.cauliflowers.forEach(elm => {
+        this.disfrutones.forEach(elm => {
 
             if (this.player.playerPos.x < elm.fruitPos.x + elm.fruitSize.w &&
                 this.player.playerPos.x + this.player.width > elm.fruitPos.x &&
                 this.player.playerPos.y < elm.fruitPos.y + elm.fruitSize.h &&
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
-                this.cauliflowers = this.cauliflowers.filter(elm => elm === 1)
-                this.player.playerLife -= 2
-
-                console.log(this.player.playerLife)
+                this.disfrutones = this.disfrutones.filter(elm => elm === 1)
+                this.player.playerLife -= 5
             }
         })
 
@@ -244,6 +243,12 @@ const ninjaGame = {
     },
 
     gameOver() {
+
+        this.ctx.font = 'bold 200px Turret Road';
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h / 2);
+        this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h / 4);
+        this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h - 230);
         clearInterval(this.interval);
     }
 
