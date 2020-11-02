@@ -1,0 +1,51 @@
+/* REFORMATED STYLE TO ALL BODY OF HTML*/
+
+body {
+    margin:0;
+    padding: 0;
+    background-image: url("../images/SALSA5.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 1920px;
+  }
+
+div.order{
+  text-align: center;
+  margin-right: 50px;
+}
+
+div.center {
+  text-align: center;
+}
+
+.center img {
+  width: 250px;
+}
+
+#start-button {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-transform: uppercase;
+}
+
+body button {
+  font-size: 100px;
+  background-color: white;
+  color: green;
+  padding: 20px 40px;
+  border: 2px solid black;
+  box-shadow: 5px blue;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  font-size: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: white;
+  color: green;
+  padding: 15px 35px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
