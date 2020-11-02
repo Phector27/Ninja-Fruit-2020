@@ -16,7 +16,7 @@
 
 
 <body>
-    
+
 
 
     <!--CANVAS-->
@@ -25,14 +25,14 @@
     <!--USED SCRIPTS-->
 
 
-    <script>  
+    <script>
 
-        const soundGame = document.getElementById("myAudio"); 
+        const soundGame = document.getElementById("myAudio");
         soundGame.volume = 0;
 
-        function playAudio() { 
-              soundGame.play(); 
-            } 
+        function playAudio() {
+            soundGame.play();
+        }
 
     </script>
     <script src="./js/apples.js"></script>
@@ -49,21 +49,19 @@
     <div class="order">
 
         <audio id="myAudio" src="./audios/gameSound.mp3" controls loop>
-                
+
         </audio>
 
         <div class="center">
 
             <button id="start-button" onclick="playAudio()" type="button">Start Game</button>
             <br>
-            <button class="instructions">Use the left and right arrow to ninja control</button>
+            <button class="instructions">Use the left, right and up arrow to ninja control</button>
             <br>
-            <img src="./images/arrows (copia).png"/>
-
-                
+            <img src="./images/arrows (copia).png" />
 
         </div>
-        
+
     </div>
 
 </body>
