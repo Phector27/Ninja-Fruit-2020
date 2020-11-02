@@ -249,6 +249,7 @@ const ninjaGame = {
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h / 2);
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h / 4);
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h - 230);
+        this.playerPoints = 0;
         clearInterval(this.interval);
     }
 
