@@ -4,7 +4,7 @@ const ninjaGame = {
 
     name: 'New Ninja Fruit Game 2020',
     description: ' Ninja fuit game made with Canvas',
-    version: '1.0.0',
+    version: '1.1',
     license: undefined,
     authors: 'Heyling Marquez & Héctor Carramiñana',
     canvas: undefined,
@@ -13,7 +13,7 @@ const ninjaGame = {
     playerPoints: 0,
     framesCounter: 0,
     canvasSize: {
-        w: window.innerWidth, // Esto lo hemos puesto así porque en setDimensions no nos tomaba las dimensiones totales de pantalla
+        w: window.innerWidth,
         h: window.innerHeight
     },
     keys: {
@@ -26,16 +26,19 @@ const ninjaGame = {
         cutSound: new Audio('./audios/cutSound.mp3'),
         candySound: new Audio('./audios/candySound.mp3'),
         midgetSound: new Audio('./audios/midgetSound.wav'),
-        gameOverSound: new Audio('./audios/gameOverSound.mp3'),
-        victorySound: new Audio('./audios/victorySound.mp3')
+        gameOverSound: new Audio('./audios/gameOverSound1.mp3'),
+        victorySound: new Audio('./audios/victorySound.mp3'),
+        sawSound: new Audio('./audios/sawSound.mp3'),
+        fireSound: new Audio('./audios/fireSound.mp3')
     },
 
     player: undefined,
     apples: [], oranges: [], pears: [], watermelon: [], candy: [], disfrutones: [],
+    obstacles: [],
+    fire: [],
+    level: 1,
 
-// level: 1 f ex.
-    
-    
+
     // INICIO:
     init(id) {
 
@@ -52,14 +55,14 @@ const ninjaGame = {
         this.canvas.setAttribute('width', this.canvasSize.w);
         this.canvas.setAttribute('height', this.canvasSize.h);
 
-        // this.canvasSize.w = this.canvasTag.width
-        // this.canvasSize.h = this.canvasTag.height
     },
 
     // EJECUCIÓN DE FUNCIONES
     start() {
 
-        this.reset();
+        // this.reset();
+
+        this.reset(this.level);
 
         this.interval = setInterval(() => {
 
@@ -67,14 +70,18 @@ const ninjaGame = {
             this.clear();
             this.drawAll();
             this.isCollision();
+            this.nextLevel();
+
+
 
             this.frames += 1;
             this.frames % 120 === 0 ? this.createApples() : null;
             this.frames % 90 === 0 ? this.createOranges() : null;
-            this.frames % 160 === 0 ? this.createPears() : null;
-            this.frames % 200 === 0 ? this.createWatermelon() : null;
+            this.frames % 130 === 0 ? this.createPears() : null;
+            this.frames % 150 === 0 ? this.createWatermelon() : null;
             this.frames % 250 === 0 ? this.createCandy() : null;
             this.frames % 80 === 0 ? this.createDisfruton() : null;
+            this.frames % 50 === 0 ? this.createObstacle() : null;
 
             this.pears.some(elm => elm.drawPears());
             this.apples.some(elm => elm.drawApple());
@@ -82,8 +89,21 @@ const ninjaGame = {
             this.watermelon.some(elm => elm.drawWatermelon());
             this.candy.some(elm => elm.drawCandy());
             this.disfrutones.some(elm => elm.drawDisfruton());
+            this.obstacles.some(elm => elm.drawObstacle());
 
             this.framesCounter > 5000 ? this.framesCounter = 0 : this.framesCounter++;
+
+
+            if (this.playerPoints >= 250) {
+
+                this.frames % 50 === 0 ? this.createFire() : null;
+                this.fire.some(elm => elm.drawFire());
+                this.ctx.font = 'bold 60px Turret Road';
+                this.ctx.fillStyle = 'white';
+                this.ctx.fillText(`LEVEL: 2`, this.canvasSize.w / 2 - 100, 75);
+            }
+
+
 
             // SCORE EN PANTALLA:
             this.ctx.font = 'bold 60px Turret Road';
@@ -100,18 +120,39 @@ const ninjaGame = {
                 return this.gameOver();
             }
 
-            if (this.playerPoints >= 1000) {
+            if (this.playerPoints >= 500) {
                 return this.victory();
             }
 
         }, 70);
+
     },
 
     // INICIO DEL JUEGO:
-    reset() {
 
-        this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png");
-        this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize);
+
+    // reset() {
+
+    //     this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png");
+    //     this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize);
+    // },
+
+    reset(level) {
+
+        switch (level) {
+
+            case 1:
+
+                this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundmerluzo.png", 7);
+                this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize);
+                break;
+
+            case 2:
+
+                this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundnight.png", 25);
+                this.player = new Player(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 400, this.keys, this.canvasSize);
+                break;
+        }
     },
 
     // CREATE FRUITS:
@@ -152,6 +193,24 @@ const ninjaGame = {
 
     },
 
+    createObstacle() {
+
+        const obstacle = new Obstacle(this.ctx, this.canvasSize.w + 1520, this.canvasSize.h - 175, 90, 60, this.canvasSize, 40);
+        this.obstacles.push(obstacle);
+    },
+
+    // clearObstacles() {
+
+    //     this.obstacles = this.obstacles.filter(obstacle => obstacle.obstaclePos.x >= 0)
+    //   },
+
+    // CREAR FUEGO:
+    createFire() {
+
+        const fire = new Fire(this.ctx, this.canvasSize.w + 1500, this.canvasSize.h - 175, 90, 60, this.canvasSize, 30);
+        this.fire.push(fire);
+    },
+
     // MOVE NINJA:
     setEventListeners() {
 
@@ -160,6 +219,16 @@ const ninjaGame = {
             e.keyCode === this.keys.right ? this.player.movePlayer('right') : null;
             e.keyCode === this.keys.jump ? this.player.movePlayer('jump') : null;
         });
+    },
+
+
+    // PASAR DE NIVEL:
+    nextLevel() {
+
+        if (this.playerPoints >= 250) {
+            this.level++;
+            this.reset(this.level);
+        }
     },
 
     // DRAW ALL:
@@ -257,6 +326,41 @@ const ninjaGame = {
             }
         });
 
+        this.obstacles.forEach(elm => {
+
+            if (this.player.playerPos.x < elm.obstaclePos.x + elm.obstacleSize.w &&
+                this.player.playerPos.x + this.player.width > elm.obstaclePos.x &&
+                this.player.playerPos.y < elm.obstaclePos.y + elm.obstacleSize.h &&
+                this.player.height + this.player.playerPos.y > elm.obstaclePos.y) {
+
+                this.obstacles = this.obstacles.filter(elm => elm === 1);
+
+                if (this.player.playerPos.y <= this.player.posY0) {
+                    this.player.playerLife -= 1;
+
+                    this.audios.sawSound.play();
+                }
+            }
+        });
+
+        this.fire.forEach(elm => {
+
+            if (this.player.playerPos.x < elm.firePos.x + elm.fireSize.w &&
+                this.player.playerPos.x + this.player.width > elm.firePos.x &&
+                this.player.playerPos.y < elm.firePos.y + elm.fireSize.h &&
+                this.player.height + this.player.playerPos.y > elm.firePos.y) {
+
+                this.fire = this.fire.filter(elm => elm === 1);
+
+                if (this.player.playerPos.y <= this.player.posY0) {
+                    this.player.playerLife -= 1;
+
+                    this.audios.fireSound.play();
+                }
+            }
+        });
+
+
     },
 
     clear() {
@@ -271,6 +375,7 @@ const ninjaGame = {
         this.ctx.fillText(`🔥🔥FUEGOTE🔥🔥`, this.canvasSize.w / 2 - 900, this.canvasSize.h / 2);
         this.playerPoints = 0;
         this.audios.victorySound.play();
+        this.level = 1;
         clearInterval(this.interval);
     },
 
@@ -283,6 +388,7 @@ const ninjaGame = {
         this.ctx.fillText(`GAME OVER`, this.canvasSize.w / 2 - 600, this.canvasSize.h - 230);
         this.playerPoints = 0;
         this.audios.gameOverSound.play();
+        this.level = 1;
         clearInterval(this.interval);
     }
 

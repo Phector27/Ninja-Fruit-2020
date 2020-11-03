@@ -2,7 +2,7 @@
 
 class Background {
 
-    constructor(ctx, backgroundWidth, backgroundHeight, imgSource) {
+    constructor(ctx, backgroundWidth, backgroundHeight, imgSource, speed) {
 
         this.ctx = ctx;
 
@@ -17,7 +17,7 @@ class Background {
         this.posX = 0;
         this.posY = 0;
 
-        this.velX = 7;
+        this.backgroundSpeed = speed;
     }
 
   draw() {
@@ -32,7 +32,7 @@ class Background {
         if (this.posX <= -this.backgroundSize.w) {
           this.posX = 0;
         }
-        this.posX -= this.velX;
+        this.posX -= this.backgroundSpeed;
       }
 
 }
