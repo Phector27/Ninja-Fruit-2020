@@ -33,7 +33,9 @@ const ninjaGame = {
     player: undefined,
     apples: [], oranges: [], pears: [], watermelon: [], candy: [], disfrutones: [],
 
-
+// level: 1 f ex.
+    
+    
     // INICIO:
     init(id) {
 
@@ -207,7 +209,7 @@ const ninjaGame = {
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
                 this.oranges = this.oranges.filter(elm => elm === 1);
-                this.playerPoints += 100;
+                this.playerPoints += 35;
 
                 this.audios.cutSound.play();
             }
@@ -221,7 +223,7 @@ const ninjaGame = {
                 this.player.height + this.player.playerPos.y > elm.fruitPos.y) {
 
                 this.watermelon = this.watermelon.filter(elm => elm === 1);
-                this.playerPoints += 35;
+                this.playerPoints += 100;
 
                 this.audios.cutSound.play();
             }
