@@ -75,13 +75,13 @@ const ninjaGame = {
 
 
             this.frames += 1;
-            this.frames % 120 === 0 ? this.createApples() : null;
-            this.frames % 90 === 0 ? this.createOranges() : null;
-            this.frames % 130 === 0 ? this.createPears() : null;
-            this.frames % 150 === 0 ? this.createWatermelon() : null;
-            this.frames % 250 === 0 ? this.createCandy() : null;
-            this.frames % 80 === 0 ? this.createDisfruton() : null;
-            this.frames % 50 === 0 ? this.createObstacle() : null;
+            this.frames % 120 === 0 ? this.createApples() : null; // jshint ignore:line
+            this.frames % 90 === 0 ? this.createOranges() : null; // jshint ignore:line
+            this.frames % 130 === 0 ? this.createPears() : null; // jshint ignore:line
+            this.frames % 150 === 0 ? this.createWatermelon() : null; // jshint ignore:line
+            this.frames % 250 === 0 ? this.createCandy() : null; // jshint ignore:line
+            this.frames % 80 === 0 ? this.createDisfruton() : null; // jshint ignore:line
+            this.frames % 50 === 0 ? this.createObstacle() : null; // jshint ignore:line
 
             this.pears.some(elm => elm.drawPears());
             this.apples.some(elm => elm.drawApple());
@@ -91,12 +91,12 @@ const ninjaGame = {
             this.disfrutones.some(elm => elm.drawDisfruton());
             this.obstacles.some(elm => elm.drawObstacle());
 
-            this.framesCounter > 5000 ? this.framesCounter = 0 : this.framesCounter++;
+            this.framesCounter > 5000 ? this.framesCounter = 0 : this.framesCounter++; // jshint ignore:line
 
 
             if (this.playerPoints >= 250) {
 
-                this.frames % 50 === 0 ? this.createFire() : null;
+                this.frames % 50 === 0 ? this.createFire() : null; // jshint ignore:line
                 this.fire.some(elm => elm.drawFire());
                 this.ctx.font = 'bold 60px Turret Road';
                 this.ctx.fillStyle = 'white';
@@ -215,9 +215,9 @@ const ninjaGame = {
     setEventListeners() {
 
         document.addEventListener('keydown', e => {
-            e.keyCode === this.keys.left ? this.player.movePlayer('left') : null;
-            e.keyCode === this.keys.right ? this.player.movePlayer('right') : null;
-            e.keyCode === this.keys.jump ? this.player.movePlayer('jump') : null;
+            e.keyCode === this.keys.left ? this.player.movePlayer('left') : null; // jshint ignore:line
+            e.keyCode === this.keys.right ? this.player.movePlayer('right') : null; // jshint ignore:line
+            e.keyCode === this.keys.jump ? this.player.movePlayer('jump') : null; // jshint ignore:line
         });
     },
 
