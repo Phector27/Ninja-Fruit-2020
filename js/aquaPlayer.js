@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-class Player {
+class Aquaplayer {
 
     constructor(ctx, playerPosX, playerPosY, keys, canvasSize) {
 
@@ -8,8 +8,8 @@ class Player {
 
         this.canvasSize = canvasSize;
 
-        this.width = 168;
-        this.height = 280;
+        this.width = 200;
+        this.height = 140;
 
         this.playerPos = {
             x: playerPosX,
@@ -21,15 +21,15 @@ class Player {
         this.playerKeys = keys;
 
         this.playerImage = new Image();
-        this.playerImage.src = './images/ninja5.png';
+        this.playerImage.src = './images/NINJASWIM2.png';
 
         this.playerImage.frames = 3;
         this.playerImage.framesIndex = 0;
 
-        this.playerLife = 5;
-
         this.velY = 1;
-        this.gravity = 2;
+        this.gravity = 0.6;
+
+        this.playerLife = 4;
 
     }
 
@@ -74,27 +74,33 @@ class Player {
             direction === 'left' ? this.playerPos.x -= 30 : null; // jshint ignore:line
             direction === 'right' ? this.playerPos.x += 30 : null; // jshint ignore:line
 
-        } else if (this.playerPos.x <= 50) {
+        }
+        
+        else if (this.playerPos.x <= 50) {
 
             direction === 'left' ? this.playerPos.x -= 0 : null; // jshint ignore:line
             direction === 'right' ? this.playerPos.x += 30 : null; // jshint ignore:line
- 
-        } else if ((this.playerPos.x + this.width) >= (this.canvasSize.w - 50)) {
+
+        }
+        
+        else if ((this.playerPos.x + this.width) >= (this.canvasSize.w - 50)) {
 
             direction === 'left' ? this.playerPos.x -= 30 : null; // jshint ignore:line
             direction === 'right' ? this.playerPos.x -= 0 : null; // jshint ignore:line
-        
 
-        } if (this.playerPos.y >= this.posY0) {
+        }
+        
+        if (this.playerPos.y >= this.posY0) {
 
             if (direction === 'jump') {
-                this.playerPos.y -= 150;
+                this.playerPos.y -= 350;
                 this.velY -= 1;
             } 
         }
+
     }
 
-
+    
     updatePosition() {
 
         if (this.playerPos.y < this.posY0) {
@@ -108,15 +114,5 @@ class Player {
           this.velY = 1.5;
         }
     }
-}
 
-
-class Player2 extends Player {
-
-    constructor(ctx, playerPosX, playerPosY, keys, canvasSize, life) {
-
-        super(ctx, playerPosX, playerPosY, keys, canvasSize);
-
-        this.player.playerLife = life;
-    }
 }

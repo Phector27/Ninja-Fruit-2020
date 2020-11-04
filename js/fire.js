@@ -3,7 +3,7 @@
 
 class Fire {
 
-    constructor(ctx, firePosX, firePosY, fireW, fireH, canvasSize, speed) {
+    constructor(ctx, firePosX, firePosY, canvasSize, speed) {
         
         this.ctx = ctx;
 
@@ -12,28 +12,57 @@ class Fire {
             y: firePosY
         };
 
-        this.fireSize = {
-            w: fireW,
-            h: fireH
-        };
+        this.width = 170;
+        this.height = 70;
 
         this.canvasSize = canvasSize;
 
         this.fireSpeed = speed;
 
         this.fireImage = new Image();
-        this.fireImage.src = './images/FUEGOFIJO3.png';
+        this.fireImage.src = './images/FUEGO2.png';
 
-        this.drawFire();
+        this.fireImage.frames = 8;
+        this.fireImage.framesIndex = 0;
+
+        // this.draw(framesCounter);
     }
 
-    drawFire() {
+
+    draw(framesCounter) {
 
         this.moveFire();
-        this.ctx.drawImage(this.fireImage, this.firePos.x, this.firePos.y, this.fireSize.w, this.fireSize.h);
 
+        this.ctx.drawImage(
+
+            this.fireImage,
+            this.fireImage.framesIndex * Math.floor(this.fireImage.width / this.fireImage.frames),
+            0,
+            Math.floor(this.fireImage.width / this.fireImage.frames),
+            this.fireImage.height,
+            this.firePos.x,
+            this.firePos.y,
+            this.width,
+            this.height
+        );
+
+        this.animate(framesCounter);
     }
 
+
+    animate(framesCounter) {
+
+        if (framesCounter % 8 == 0) {
+            this.fireImage.framesIndex++;
+        }
+        
+        if (this.fireImage.framesIndex > this.fireImage.frames - 1) {
+            this.fireImage.framesIndex = 0;
+
+          }
+    }
+
+    
     moveFire() {
 
         this.firePos.x -= this.fireSpeed;
