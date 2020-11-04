@@ -113,7 +113,7 @@ const ninjaGame = {
             this.ctx.fillText(`LEVEL: ${this.level}`, this.canvasSize.w / 2 - 100, 75);
 
 
-            if (this.playerPoints >= 0 && this.playerPoints < 350) {
+            if (this.playerPoints >= 0 && this.playerPoints < 700) {
 
                 this.frames % 50 === 0 ? this.createObstacle() : null; // jshint ignore:line
             }
@@ -173,7 +173,7 @@ const ninjaGame = {
 
             case 3:
 
-                this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/FONDO3.png", 30);
+                this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/FONDO3.png", 35);
                 this.player = new Aquaplayer(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 200, this.keys, this.canvasSize);
                 break;
         }
