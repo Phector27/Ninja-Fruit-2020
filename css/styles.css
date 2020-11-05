@@ -9,8 +9,9 @@ body {
     background-image: url("../images/backgroundStart.png");
     background-position: 0 0;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 1920px;
     overflow-x: hidden;
+    overflow-y: hidden;
   }
 
 
