@@ -1,7 +1,8 @@
 /*jshint esversion: 6 */
 
 
-// GOD OBJECT:
+// GLOBAL OBJECT:
+
 const ninjaGame = {
 
     name: 'New Ninja Fruit Game 2020',
@@ -47,6 +48,7 @@ const ninjaGame = {
 
 
     // INIT:
+
     init(id) {
 
         this.canvas = document.getElementById(id);
@@ -59,6 +61,7 @@ const ninjaGame = {
 
 
     // CANVAS DIMENSIONS:
+
     setDimensions() {
 
         this.canvas.setAttribute('width', this.canvasSize.w);
@@ -68,7 +71,8 @@ const ninjaGame = {
 
 
 
-    // PRINCIPAL FUNCTIONS:
+    // START GAME FUNCTIONS:
+
     start() {
 
         this.reset(this.level);
@@ -129,19 +133,25 @@ const ninjaGame = {
             }
 
 
+
             // SCORE ON SCREEN:
+
             this.ctx.font = 'bold 60px Turret Road';
             this.ctx.fillStyle = '#5e1f0c';
             this.ctx.fillText(`SCORE: ${this.playerPoints}`, 75, 75);
 
 
+
             // LIVES ON SCREEN:
+
             this.ctx.font = 'bold 60px Turret Road';
             this.ctx.fillStyle = 'yellow';
             this.ctx.fillText(`LIVES: ${this.player.playerLife}`, this.canvasSize.w - 300, 75);
 
 
+
             //GAME OVER AND VICTORY CALLED FUNCTIONS:
+
             if (this.player.playerLife <= 0) {
                 return this.gameOver();
             }
@@ -154,7 +164,10 @@ const ninjaGame = {
 
     },
 
-    // RESET DIFFERENTS BACKGROUNDS:
+
+
+    // RESET DIFFERENTS LEVELS:
+
     reset(level) {
 
         switch (level) {
@@ -173,7 +186,7 @@ const ninjaGame = {
 
             case 3:
 
-                this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/FONDO3.png", 35);
+                this.background = new Background(this.ctx, this.canvasSize.w, this.canvasSize.h, "./images/backgroundaqua.png", 35);
                 this.player = new Aquaplayer(this.ctx, this.canvasSize.w / 2 - 50, this.canvasSize.h - 200, this.keys, this.canvasSize);
                 break;
         }
@@ -182,6 +195,7 @@ const ninjaGame = {
 
 
     // CREATE FRUITS AND OBSTACLES:
+
     createApples() {
 
         const apple = new Apple(this.ctx, Math.random() * this.canvasSize.w - 100, 0, 80, 80, this.canvasSize, 15);
@@ -239,7 +253,8 @@ const ninjaGame = {
 
 
 
-    // CONTROL NINJA:
+    // PLAYER CONTROL:
+
     setEventListeners() {
 
         document.addEventListener('keydown', e => {
@@ -252,7 +267,8 @@ const ninjaGame = {
 
 
 
-    // NEXT LEVEL:
+    // LEVEL UP:
+
     nextLevel() {
 
         if (this.playerPoints > 350 && this.level < 2) {
@@ -271,6 +287,7 @@ const ninjaGame = {
 
 
     // DRAW ALL:
+
     drawAll() {
 
         this.background.draw();
@@ -432,6 +449,7 @@ const ninjaGame = {
 
 
     // CLEAR SCREEN:
+
     clear() {
         this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h);
     },
@@ -439,6 +457,7 @@ const ninjaGame = {
 
 
     // VICTORY:
+
     victory() {
 
         this.ctx.font = 'bold 200px Turret Road';
@@ -454,6 +473,7 @@ const ninjaGame = {
 
 
     // GAME OVER:
+
     gameOver() {
 
         this.ctx.font = 'bold 200px Turret Road';

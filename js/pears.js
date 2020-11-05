@@ -26,6 +26,10 @@ class Pear {
         this.drawPears();
     }
 
+
+
+    /* PEARS DRAW */
+
     drawPears() {
         
         this.movePears();
@@ -33,8 +37,13 @@ class Pear {
     
     }
 
+
+
+    /* PEARS MOVE */
+    
     movePears() {
 
         this.fruitPos.y += this.fruitSpeed;
     }
+    
 }

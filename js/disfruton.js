@@ -21,11 +21,15 @@ class Disfruton {
         this.fruitSpeed = speed;
 
         this.fruitImage = new Image();
-        this.fruitImage.src = './images/DISFRUTON.png';
+        this.fruitImage.src = './images/disfruton.png';
 
         this.drawDisfruton();
     }
 
+
+
+    /* DISFRUTONES DRAW */
+    
     drawDisfruton() {
         
         this.moveDisfruton();
@@ -33,6 +37,10 @@ class Disfruton {
     
     }
 
+
+
+    /* DISFRUTONES MOVE */
+    
     moveDisfruton() {
 
         this.fruitPos.y += this.fruitSpeed;

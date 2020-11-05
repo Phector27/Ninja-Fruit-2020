@@ -26,6 +26,10 @@ class Candy {
         this.drawCandy();
     }
 
+
+
+    /* CANDIES DRAW */
+    
     drawCandy() {
         
         this.moveCandy();
@@ -33,6 +37,10 @@ class Candy {
     
     }
 
+
+
+    /* CANDIES MOVE */
+    
     moveCandy() {
 
         this.fruitPos.y += this.fruitSpeed;

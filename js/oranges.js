@@ -26,6 +26,10 @@ class Orange {
         this.drawOrange();
     }
 
+
+
+    /* ORANGES DRAW */
+
     drawOrange() {
         
         this.moveOranges();
@@ -33,6 +37,10 @@ class Orange {
     
     }
 
+
+
+    /* ORANGES MOVE */
+    
     moveOranges() {
 
         this.fruitPos.y += this.fruitSpeed;

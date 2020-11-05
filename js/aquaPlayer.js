@@ -21,7 +21,7 @@ class Aquaplayer {
         this.playerKeys = keys;
 
         this.playerImage = new Image();
-        this.playerImage.src = './images/NINJASWIM2.png';
+        this.playerImage.src = './images/ninjaswim.png';
 
         this.playerImage.frames = 3;
         this.playerImage.framesIndex = 0;
@@ -34,6 +34,9 @@ class Aquaplayer {
     }
 
 
+
+    /* DRAW AQUAPLAYER WITH FRAMES */
+    
     draw(framesCounter) {
         
         this.ctx.drawImage(
@@ -54,6 +57,9 @@ class Aquaplayer {
     }
 
 
+
+    /* AQUAPLAYER ANIMATION / USE FRAMES */
+    
     animate(framesCounter) {
 
         if (framesCounter % 3 == 0) {
@@ -67,6 +73,9 @@ class Aquaplayer {
     }
 
 
+
+    /* AQUAPLAYER MOVE BY PX */
+    
     movePlayer(direction) {  
 
         if (this.playerPos.x > 50 && (this.playerPos.x + this.width) < (this.canvasSize.w - 50)) {
@@ -100,6 +109,9 @@ class Aquaplayer {
 
     }
 
+    
+
+    /* CORRECT AQUAPLAYER POSITION WITH GRAVITY */
     
     updatePosition() {
 

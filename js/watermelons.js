@@ -26,6 +26,10 @@ class Watermelon {
         this.drawWatermelon();
     }
 
+
+
+    /* WATERMELONS DRAW */
+    
     drawWatermelon() {
         
         this.moveWatermelon();
@@ -33,8 +37,13 @@ class Watermelon {
     
     }
 
+
+
+    /* WATERMELONS MOVE */
+    
     moveWatermelon() {
 
         this.fruitPos.y += this.fruitSpeed;
     }
+    
 }

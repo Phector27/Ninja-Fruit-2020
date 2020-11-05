@@ -21,7 +21,7 @@ class Player {
         this.playerKeys = keys;
 
         this.playerImage = new Image();
-        this.playerImage.src = './images/ninja5.png';
+        this.playerImage.src = './images/ninja.png';
 
         this.playerImage.frames = 3;
         this.playerImage.framesIndex = 0;
@@ -34,6 +34,9 @@ class Player {
     }
 
 
+
+    /* DRAW PLAYER WITH FRAMES */
+    
     draw(framesCounter) {
         
         this.ctx.drawImage(
@@ -54,6 +57,9 @@ class Player {
     }
 
 
+
+    /* PLAYER ANIMATION / USE FRAMES */
+    
     animate(framesCounter) {
 
         if (framesCounter % 3 == 0) {
@@ -67,6 +73,9 @@ class Player {
     }
 
 
+
+    /* PLAYER MOVE BY PX */
+    
     movePlayer(direction) {  
 
         if (this.playerPos.x > 50 && (this.playerPos.x + this.width) < (this.canvasSize.w - 50)) {
@@ -95,6 +104,9 @@ class Player {
     }
 
 
+
+    /* CORRECT PLAYER POSITION WITH GRAVITY */
+
     updatePosition() {
 
         if (this.playerPos.y < this.posY0) {
@@ -111,6 +123,9 @@ class Player {
 }
 
 
+
+
+/* EXTENDS PROPERTIES OF PLAYER */
 class Player2 extends Player {
 
     constructor(ctx, playerPosX, playerPosY, keys, canvasSize, life) {

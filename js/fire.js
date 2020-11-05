@@ -1,4 +1,3 @@
-
 /*jshint esversion: 6 */
 
 class Fire {
@@ -20,15 +19,18 @@ class Fire {
         this.fireSpeed = speed;
 
         this.fireImage = new Image();
-        this.fireImage.src = './images/FUEGO2.png';
+        this.fireImage.src = './images/fire.png';
 
         this.fireImage.frames = 8;
         this.fireImage.framesIndex = 0;
 
-        // this.draw(framesCounter);
     }
 
 
+
+
+    /* FIRE ANIMATION / USE FRAMES */
+    
     draw(framesCounter) {
 
         this.moveFire();
@@ -50,6 +52,9 @@ class Fire {
     }
 
 
+
+    /* FIRE MOVE BY PX */
+    
     animate(framesCounter) {
 
         if (framesCounter % 8 == 0) {
@@ -62,6 +67,9 @@ class Fire {
           }
     }
 
+    
+
+    /* FIRE MOVE FROM NEGATIVE-X */
     
     moveFire() {
 

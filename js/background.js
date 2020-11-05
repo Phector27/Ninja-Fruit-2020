@@ -20,19 +20,27 @@ class Background {
         this.backgroundSpeed = speed;
     }
 
-  draw() {
-    
-    this.ctx.drawImage(this.image, this.posX, this.posY, this.backgroundSize.w, this.backgroundSize.h);
-    this.ctx.drawImage(this.image, this.posX + this.backgroundSize.w, this.posY, this.backgroundSize.w, this.backgroundSize.h);
   
-    this.move();
-}
+  
+    /* BACKGROUND DRAW */
+  
+    draw() {
     
-      move() {
-        if (this.posX <= -this.backgroundSize.w) {
-          this.posX = 0;
-        }
-        this.posX -= this.backgroundSpeed;
+      this.ctx.drawImage(this.image, this.posX, this.posY, this.backgroundSize.w, this.backgroundSize.h);
+      this.ctx.drawImage(this.image, this.posX + this.backgroundSize.w, this.posY, this.backgroundSize.w, this.backgroundSize.h);
+    
+      this.move();
+    }
+    
+  
+  
+    /* BACKGROUND MOVE */
+  
+    move() {
+      if (this.posX <= -this.backgroundSize.w) {
+        this.posX = 0;
       }
+      this.posX -= this.backgroundSpeed;
+    }
 
 }

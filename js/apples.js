@@ -26,12 +26,20 @@ class Apple {
         this.drawApple();
     }
 
+
+
+    /* APPLES DRAW */
+
     drawApple() {
         
         this.moveApples();
         this.ctx.drawImage(this.fruitImage, this.fruitPos.x, this.fruitPos.y, this.fruitSize.w, this.fruitSize.h);
     
     }
+
+
+    
+    /* APPLES DRAW */
 
     moveApples() {
 

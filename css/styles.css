@@ -1,31 +1,43 @@
-/* REFORMATED STYLE TO ALL BODY OF HTML*/
+/* STYLES */
+
+
+/* BODY STYLE */
 
 body {
     margin:0;
     padding: 0;
-    background-image: url("../images/SALSA6.png");
+    background-image: url("../images/backgroundStart.png");
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: auto;
+    overflow-x: hidden;
   }
 
+
+
+  /* AUDIO/START BUTTON ORDER AND STYLE */
+  
 div.order{
   text-align: center;
   margin-right: 50px;
 }
 
+
 div.center {
   text-align: center;
 }
+
 
 .center img {
   width: 250px;
 }
 
+
 #start-button {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
 }
+
 
 body button {
   font-size: 100px;
@@ -37,6 +49,7 @@ body button {
   border-radius: 20px;
   margin-bottom: 20px;
 }
+
 
 .instructions {
   font-size: 25px;

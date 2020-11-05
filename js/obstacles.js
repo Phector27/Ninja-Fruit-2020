@@ -21,11 +21,15 @@ class Obstacle {
         this.obstacleSpeed = speed;
 
         this.obstacleImage = new Image();
-        this.obstacleImage.src = './images/SAWFLOOR.png';
+        this.obstacleImage.src = './images/sawfloor.png';
 
         this.drawObstacle();
     }
 
+
+
+    /* SAWS DRAW */
+    
     drawObstacle() {
 
         this.moveObstacle();
@@ -33,6 +37,10 @@ class Obstacle {
 
     }
 
+
+
+    /* SAWS MOVE */
+    
     moveObstacle() {
 
         this.obstaclePos.x -= this.obstacleSpeed;

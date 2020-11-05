@@ -19,13 +19,16 @@ class Shark {
         this.sharkSpeed = speed;
 
         this.sharkImage = new Image();
-        this.sharkImage.src = './images/SHARK.png';
+        this.sharkImage.src = './images/shark.png';
 
         this.sharkImage.frames = 3;
         this.sharkImage.framesIndex = 0;
 
     }
 
+
+
+    /* SHARK ANIMATION / USE FRAMES */
 
     draw(framesCounter) {
 
@@ -48,6 +51,10 @@ class Shark {
     }
 
 
+
+
+    /* SHARK ANIMATION / USE FRAMES */
+    
     animate(framesCounter) {
 
         if (framesCounter % 3 == 0) {
@@ -59,7 +66,10 @@ class Shark {
 
           }
     }
+    
 
+
+    /* SHARK MOVE FROM NEGATIVE-X */
     
     moveShark() {
 
