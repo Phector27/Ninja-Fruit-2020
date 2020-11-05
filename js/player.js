@@ -26,7 +26,7 @@ class Player {
         this.playerImage.frames = 3;
         this.playerImage.framesIndex = 0;
 
-        this.playerLife = 5;
+        this.playerLife = 10;
 
         this.velY = 1;
         this.gravity = 2;
