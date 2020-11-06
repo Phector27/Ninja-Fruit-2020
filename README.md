@@ -114,7 +114,7 @@ Dont worry fellow, scroll down and click on **START GAME** and start again to tr
 
 ![restart gif](https://github.com/Phector27/new-ninja-fruit-game-Canvas-JS/blob/main/images/gameover.gif?raw=true)
 
-And...**_That's all Folks_**
+And...**_That's all Folks._**
 
 ## Authors ✒️
 
