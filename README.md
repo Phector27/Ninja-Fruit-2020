@@ -110,11 +110,11 @@ Special mention to the song used when obtain the victory. **Sonic the hedgehog**
 
 ![Game over image](https://github.com/Phector27/new-ninja-fruit-game-Canvas-JS/blob/main/images/gameover.png?raw=true)
 
-Dont worry fellow, scroll down and click on **START GAME** and start again yo try to be the best **Ninja Fruit 2020** :)
+Dont worry fellow, scroll down and click on **START GAME** and start again to try to be the best **Ninja Fruit 2020** :)
 
 ![restart gif](https://github.com/Phector27/new-ninja-fruit-game-Canvas-JS/blob/main/images/gameover.gif?raw=true)
 
-And...**_That's all Folks_**
+And...**_That's all Folks._**
 
 ## Authors ✒️
 
