@@ -20,7 +20,7 @@ Collect all fruits that you can, and remember: **¡¡Be careful with the DISFRUT
 
 **1. Go to the URL of game:**
 
-[NEW NINJA FRUIT GAME 2020](https://phector27.github.io/new-ninja-fruit-game-Canvas-JS/) 
+[NEW NINJA FRUIT GAME 2020](https://phector27.github.io/NEW-NINJA-FRUIT/) 
 
 **2. Do you want to play with audio?**
 
