@@ -2,7 +2,7 @@
 
 New and customized game of the well-known: Ninja Fruit.
 
-Created by: **Heyling Márquez && Héctor Carramiñana**.
+Created by: **Héctor Carramiñana && Heyling Márquez**.
 
 A game based on a ninja who must cut all the fruit possible to go through different levels, where the last screen will be a wink to the aquatic screens of Super Mario Bros.
 
@@ -118,8 +118,8 @@ And...**_That's all Folks._**
 
 ## Authors ✒️
 
-* **Heyling Márquez** - *Complete game development* - (https://github.com/heyling08)
 * **Héctor Carramiñana** - *Complete game development* - (https://github.com/Phector27)
+* **Heyling Márquez** - *Complete game development* - (https://github.com/heyling08)
 
 ### Built with :heart:
 
