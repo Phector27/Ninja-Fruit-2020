@@ -93,6 +93,9 @@ Sometimes sharks hide down there.
 
 ```
 
+### Check this youtube video:
+[![YoutubeShow](http://img.youtube.com/vi/CwArQ-ACuo4/0.jpg)](http://www.youtube.com/watch?v=CwArQ-ACuo4 "ShowGame")
+
 ## Win the game? :trophy:
 
 ![Win the game image](https://github.com/Phector27/new-ninja-fruit-game-Canvas-JS/blob/main/images/win.png?raw=true)
@@ -115,6 +118,7 @@ Dont worry fellow, scroll down and click on **START GAME** and start again to tr
 ![restart gif](https://github.com/Phector27/new-ninja-fruit-game-Canvas-JS/blob/main/images/gameover.gif?raw=true)
 
 And...**_That's all Folks._**
+
 
 ## Authors ✒️
 
